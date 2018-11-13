@@ -1,31 +1,9 @@
-global.__base = __dirname + '/';
-require('dotenv').config();
+global.__base = __dirname+"/views/"
 
-let passport = require('passport');
-let flash = require('connect-flash');
-let morgan = require('morgan');
-let cookieParser = require('cookie-parser');
-let bodyParser = require('body-parser');
-let session = require('express-session');
+const express = require('express')
+const app = express()
+const port = 3000
 
-let express = require('express');
-let app = express();
+app.get('/', (req, res) => res.sendFile(__base+'index.html'))
 
-app.use('/public', express.static(__base + 'public'));
-app.use(morgan('dev'));
-app.use(cookieParser());
-app.use(session({secret: 'amalgamation'}));
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
-
-// require('./config/auth/passport')(passport);
-require(__base + 'router.js')(passport, app);
-
-app.set('views', __base + 'views/');
-app.set('view engine', 'html');
-
-console.log('port = ' + process.env.PORT);
-app.listen(process.env.PORT);
-console.info('Listening on port ' + process.env.PORT);
+app.listen(port, () => console.log(`App listening on port ${port}!`))
