@@ -3,15 +3,23 @@
 <head>
     <title>Teender</title>
     <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="1076126682077-gjerltlnjjv82bfhqov225tq05k5gsu8.apps.googleusercontent.com">
 </head>
-<body>
-    <body style="background-color:orange;">
+
+<body style="background-color:orange;">
     <img src="teender.png" alt="Teender">
-    <h1>Welcome to Teender</h1>
-    <p>Teender is a teen dating and social networking application.</p>
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    <nav>
+      <ol>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ol>
+    </nav>
+    <h1 id="Home">Welcome to Teender</h1>
+    
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <div id="g-signin2" data-onsuccess="onSignIn"></div>
+    
     <script>
       function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
@@ -27,6 +35,26 @@
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
       };
+      function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log('User signed out.');
+        });
+      };
+      function renderButton(){
+        gapi.signin2.render("g-signin2",{
+          'scope': 'profile,email',
+          'theme': 'dark',
+          'onsuccess': onSignIn,
+          'onfailure':onFailure
+        });
+        function onFailure(error){
+          console.log(error);
+        }
+      }
     </script>
+    <a href="#" onclick="signOut();">Sign out</a>
+    
+    <p id="About Us">Teender is a teen dating and social networking application.</p>
 </body>
 </html>
