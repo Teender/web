@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Teender</title>
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="1076126682077-gjerltlnjjv82bfhqov225tq05k5gsu8.apps.googleusercontent.com">
-<style>
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-    width: 269px;
-}
+  <title>Teender</title>
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="1076126682077-gjerltlnjjv82bfhqov225tq05k5gsu8.apps.googleusercontent.com">
+  <style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        width: 269px;
+    }
 
-li {
-    float: left;
-}
+    li {
+        float: left;
+    }
 
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
 
-li a:hover {
-    background-color: #ff6600; /* hover background green */
-}
-</style>
+    li a:hover {
+        background-color: #ff6600; /* hover background green */
+    }
+  </style>
 </head>
 
 <body style="background-color:orange;">
@@ -41,11 +41,12 @@ li a:hover {
         <li><a href="#">Contact Us</a></li>
       </ul>
     </nav>
+    <br><br>
     <h1 id="Home">Welcome to Teender</h1>
     
     <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     <div id="g-signin2" data-onsuccess="onSignIn"></div>
-    
+    <br><br>
     <script>
       function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
@@ -60,7 +61,6 @@ li a:hover {
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
-        //g-signin2.hide();
       };
       function signOut() {
         var auth2 = gapi.auth2.getAuthInstance();
@@ -70,7 +70,7 @@ li a:hover {
       };
       function renderButton(){
         gapi.signin2.render("g-signin2",{
-          //'scope': 'profile, email',
+          'scope': 'profile,email',
           'theme': 'dark',
           'onsuccess': onSignIn,
           'onfailure':onFailure
