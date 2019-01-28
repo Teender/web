@@ -10,7 +10,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: white;
     width: 269px;
 }
 
@@ -20,19 +20,21 @@ li {
 
 li a {
     display: block;
-    color: white;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    text-decoration-color: white;
 }
 
 li a:hover {
-    background-color: #ff6600; /* hover background green */
+    background-color: darkgray; /* hover background green */
 }
 </style>
 </head>
 
-<body style="background-color:green;">
+<body style="background-color:gray;">
+    
     <img src="teender.png" alt="Teender">
     <nav>
       <ul>
@@ -41,7 +43,7 @@ li a:hover {
         <li><a href="#">Contact Us</a></li>
       </ul>
     </nav>
-    <h1 id="Home">Welcome to Teender</h1>
+    <h1 id="Home" style="color:white">Welcome to Teender</h1>
     
     <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     <div id="g-signin2" data-onsuccess="onSignIn"></div>
@@ -73,7 +75,7 @@ li a:hover {
           //'scope': 'profile, email',
           'theme': 'dark',
           'onsuccess': onSignIn,
-          'onfailure':onFailure
+          'onfailure': onFailure
         });
         function onFailure(error){
           console.log(error);
@@ -82,6 +84,6 @@ li a:hover {
     </script>
     <a href="#" onclick="signOut();">Sign out</a>
     
-    <p id="About Us">Teender is a teen dating and social networking application.</p>
+    <p style="color:white" id="About Us">Teender is a teen dating and social networking application in which students are matched with an anonymous student from their school who they can chat with. After a few messages, the students can decide whether they want to "match" with each other and reveal their identities. If both students decide to match, then their identity is revealed. The pool of students is pulled from the school email account address book to ensure only students are chatting with each other. </p>
 </body>
 </html>
